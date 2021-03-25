@@ -15,6 +15,9 @@
 <ul>
     <li>HTML5</li>
     <li>CSS3</li>
+    <ul>
+      <li>Bootstrap</li>
+    </ul>
     <li>JavaScript</li>
     <ul>
         <li>ECMAScript 2015 - ES6</li>
