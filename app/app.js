@@ -38,11 +38,24 @@ document.querySelector('#register').addEventListener('click', function() {
     )
 
     if (despesas.dataValidate()) {
-        dataBase.gravar(despesas);
-        $('#successRecording').modal('show')
+        // dataBase.gravar(despesas);
+        $('#actionRecording').modal('show')
+        document.querySelector('#modal-title').innerHTML= 'Sucesso na gravação'
+        document.querySelector('#modal-text').classList= 'modal-header text-success'
+
+        document.querySelector('#text-content').innerHTML= ' Despesa cadastrada com sucesso!'
+
+        document.querySelector('#button-ok').innerHTML= 'Ok'
+        document.querySelector('#button-ok').classList= 'btn btn-success'
     } else {
-        $('#errorRecording').modal('show')
-        console.log('Dados invalidos')
+        $('#actionRecording').modal('show')
+        document.querySelector('#modal-title').innerHTML= 'Erro na gravação'
+        document.querySelector('#modal-text').classList= 'modal-header text-danger'
+
+        document.querySelector('#text-content').innerHTML= 'Erro no cadastro, favor preencher todos os campos!'
+
+        document.querySelector('#button-ok').innerHTML= 'Ok'
+        document.querySelector('#button-ok').classList= 'btn btn-danger'
     }    
 })
 
