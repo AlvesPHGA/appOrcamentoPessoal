@@ -1,0 +1,3 @@
+function loadRecord() {
+    dataBase.retrieveAllRecords();
+}
