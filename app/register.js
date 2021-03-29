@@ -18,7 +18,7 @@ function register() {
     )
 
     if (despesas.dataValidate()) {
-        // dataBase.gravar(despesas);
+        dataBase.gravar(despesas);
         $('#actionRecording').modal('show')
         document.querySelector('#modal-title').innerHTML= 'Sucesso na gravação'
         document.querySelector('#modal-text').classList= 'modal-header text-success'
@@ -27,6 +27,13 @@ function register() {
 
         document.querySelector('#button-ok').innerHTML= 'Ok'
         document.querySelector('#button-ok').classList= 'btn btn-success'
+
+        ano.value= '' 
+        mes.value= '' 
+        dia.value= '' 
+        tipo.value= '' 
+        descricao.value= '' 
+        valor.value= ''
     } else {
         $('#actionRecording').modal('show')
         document.querySelector('#modal-title').innerHTML= 'Erro na gravação'
@@ -84,8 +91,24 @@ class DataBase{
     }
 
     retrieveAllRecords(){
-        console.log('Esta tudo indo bem')
+        let despesas= []
+
+        let id= localStorage.getItem('id');
+        
+        for (let i = 1; i <= id; i++) {
+            let despesa = JSON.parse(localStorage.getItem(i));
+
+            if (despesa === null) {
+                continue
+            }
+
+            despesas.push(despesa)                        
+        }
+
+        return despesas;        
     }
+
+    
 }
 
 let dataBase= new DataBase()
