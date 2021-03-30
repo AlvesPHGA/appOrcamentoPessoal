@@ -102,6 +102,7 @@ class DataBase{
                 continue
             }
 
+            despesa.id= i;
             despesas.push(despesa)                        
         }
 
@@ -139,6 +140,10 @@ class DataBase{
         }
 
         return filteredExpenses
+    }
+
+    remove(id){
+        localStorage.removeItem(id)
     }
 
     
