@@ -108,6 +108,39 @@ class DataBase{
         return despesas;        
     }
 
+    search(despesa){
+        let filteredExpenses= []
+        filteredExpenses= this.retrieveAllRecords();
+
+        console.log(filteredExpenses)
+
+        if (despesa.ano != '') {
+            filteredExpenses= filteredExpenses.filter(v => v.ano == despesa.ano)
+        }
+
+        if (despesa.mes != '') {
+            filteredExpenses= filteredExpenses.filter(v => v.mes == despesa.mes)
+        }
+
+        if (despesa.dia != '') {
+            filteredExpenses= filteredExpenses.filter(v => v.dia == despesa.dia)
+        }
+
+        if (despesa.tipo != '') {
+            filteredExpenses= filteredExpenses.filter(v => v.tipo == despesa.tipo)
+        }
+
+        if (despesa.descricao != '') {
+            filteredExpenses= filteredExpenses.filter(v => v.descricao == despesa.descricao)
+        }
+
+        if (despesa.valor != '') {
+            filteredExpenses= filteredExpenses.filter(v => v.valor == despesa.valor)
+        }
+
+        return filteredExpenses
+    }
+
     
 }
 
