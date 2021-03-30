@@ -1,11 +1,12 @@
-function loadRecord() {
-    let despesas= []
-
-    despesas= dataBase.retrieveAllRecords();
+function loadRecord(despesas= [], filter = false) {
+    if (despesas.length == 0 && filter == false) {
+        despesas= dataBase.retrieveAllRecords();
+    } 
 
     console.log(despesas)
 
     let expenseList= document.querySelector("#expenseList")
+    expenseList.innerHTML= ''
     
     despesas.forEach(function (d) {
         console.log(d)
@@ -39,4 +40,21 @@ function loadRecord() {
         rowList.insertCell(2).innerHTML= d.descricao;
         rowList.insertCell(3).innerHTML= d.valor;
     })
+}
+
+
+// Filtrando resultados
+function searchExpense(){
+    let ano=document.querySelector('#ano').value;
+    let mes=document.querySelector('#mes').value;
+    let dia=document.querySelector('#dia').value;
+    let tipo=document.querySelector('#tipo').value;
+    let descricao=document.querySelector('#descricao').value;
+    let valor=document.querySelector('#valor').value;
+
+    let despesa= new Despesas(ano, mes, dia, tipo, descricao, valor)
+
+    let despesas= dataBase.search(despesa); 
+
+    this.loadRecord(despesas, true)
 }
